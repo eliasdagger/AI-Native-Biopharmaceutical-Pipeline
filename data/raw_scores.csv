@@ -1,12 +1,12 @@
 indication,clinical_severity,therapeutic_effectiveness_gap,access_affordability_gap,mechanistic_coverage_gap,competitive_density,repurposing_tractability,time_to_market_proximity
-Glioblastoma, 1, 1, 1, 1, 1, 1, 1
-Alzheimer's Disease, 2, 2, 2, 2, 2, 2, 2
+Glioblastoma, 1,1,1,1,1,1,1
+Alzheimer's Disease, 2,2,2,2,2,2,2
 Idiopathic Pulmonary Fibrosis,3,3,3,3,3,3,3
-Sickle Cell Disease,4,4,4,4,4,4,4,4
-Gastrointestinal Acute Radiation Syndrome,5,5,5,5,5,5,5,5
-Mucopolysaccharidosis Type VI,6,6,6,6,6,6,6,6
-Breast Cancer,7,7,7,7,7,7,7,7
-Cisplatin-Associated Nephrotoxicity,8,8,8,8,8,8,8,8
-Hereditary Xerocytosis,9,9,9,9,9,9,9,9
-POF,10,10,10,10,10,10,10,10
-BCC,11,11,11,11,11,11,11,11
+Sickle Cell Disease,4,4,4,4,4,4,4
+Gastrointestinal Acute Radiation Syndrome,5,5,5,5,5,5,5
+Mucopolysaccharidosis Type VI,6,6,6,6,6,6,6
+Breast Cancer,7,7,7,7,7,7,7
+Cisplatin-Associated Nephrotoxicity,8,8,8,8,8,8,8
+Hereditary Xerocytosis,9,9,9,9,9,9,9
+POF,10,10,10,10,10,10,10
+BCC,11,11,11,11,11,11,11

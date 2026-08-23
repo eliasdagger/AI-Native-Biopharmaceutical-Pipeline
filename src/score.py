@@ -1,38 +1,31 @@
-import os
-import csv
+import numpy as np
+from normalize import load_scores, normalize
 
-DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "raw_scores.csv")
-
-# Represent each 11 indications represented as a vector R7 of unmet needs.
-def create_indications_as_vector(file_path=DATA_PATH):
-    indication_vectors = {}
-    with open(file_path, "r") as c:
-        reader = csv.reader(c)
-        header = next(reader)
-        print(header)
-        
-        for indication in reader: 
-            indication_vectors[indication[0]] = [int(w) for w in indication[1:]]
-            print(f"Created {indication[0]} as a vector ")
-
-    return indication_vectors
-
-def create_unmet_score_vectors(file_path=DATA_PATH):
-    unmet_needs_vectors = {}
-    with open(file_path, "r") as c:
-        reader = csv.reader(c)
-        header = next(reader)
-        unmet_lst = [header[i] for i in range(len(header))]
-        for unmet_need in reader:
-            for i in range(1, len(header)):
-                unmet_needs_vectors.setdefault(unmet_lst[i], []).append(int(unmet_need[i]))
-                print(f"Mapped: {unmet_lst[i]} -> {unmet_need[i]}")
-
-    return unmet_needs_vectors
-        
-
-
-
+def baseline_ranking(X, indications):
+    """Define a ranking function which allocates equal weights to all features/unmet needs
     
-print(create_indications_as_vector())
-print(create_unmet_score_vectors())
+    score_i = w . x'_i
+    """
+
+    # Count n cols in our mxn matrix
+    num_features = X.shape[1]
+    # Set all weights to 0
+    w_baseline = np.ones(num_features) / num_features
+
+    scores = X @ w_baseline
+    # Order desc, highest/best first
+    ordered = np.argsort(-scores)
+    ranked = [(indications[i], ordered[i]) for i in ordered]
+
+    return scores, ranked
+
+if __name__ == "__main__":
+    raw_scores = load_scores()
+    normalized_scores = normalize(raw_scores)
+    indications = list(raw_scores.index)
+
+    scores, ranked = baseline_ranking(normalized_scores, indications)
+
+    print("Equal Weight Rankings:")
+    for rank, (name, s) in enumerate(ranked, 1):
+        print(f"{rank:2d}. {name:<45} {s:.4f}")

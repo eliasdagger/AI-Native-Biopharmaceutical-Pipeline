@@ -1,5 +1,5 @@
 indication,clinical_severity,therapeutic_effectiveness_gap,access_affordability_gap,mechanistic_coverage_gap,competitive_density,repurposing_tractability,time_to_market_proximity
-Glioblastoma,9,8,6,7,2,3,4
+Glioblastoma,100,8,6,7,2,3,4
 Alzheimer's Disease,8,7,5,9,1,2,2
 Idiopathic Pulmonary Fibrosis,7,6,4,5,4,5,6
 Sickle Cell Disease,6,3,7,3,6,8,7

@@ -13,11 +13,12 @@ def baseline_ranking(X, indications):
     w_baseline = np.ones(num_features) / num_features
 
     scores = X @ w_baseline
-    # Order desc, highest/best first
     ordered = np.argsort(-scores)
-    ranked = [(indications[i], ordered[i]) for i in ordered]
+    ranked = [(indications[i], scores[i]) for i in ordered]
 
     return scores, ranked
+
+
 
 if __name__ == "__main__":
     raw_scores = load_scores()
@@ -25,6 +26,8 @@ if __name__ == "__main__":
     indications = list(raw_scores.index)
 
     scores, ranked = baseline_ranking(normalized_scores, indications)
+    print(f"SCORES: {scores}")
+    print(f"RANKED: {ranked}")
 
     print("Equal Weight Rankings:")
     for rank, (name, s) in enumerate(ranked, 1):
